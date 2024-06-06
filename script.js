@@ -1,6 +1,9 @@
 let cChoice = ["rock", "paper", "scissors"];
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
+let round
+
+
 
 //for computer choice
 function getComputerChoice() {
@@ -19,19 +22,19 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === "scissors" && computerChoice === "paper")
   ) {
     console.log('Human wins in this round!');
-    humanScore++;
+ playerScore++;
   } else {
     console.log('Computer wins in this round!');
     computerScore++;
   }
 
-  console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+  console.log(`Human Score: ${playerScore}, Computer Score: ${computerScore}`);
 
 }
 
 function playGame() {
 
-  while (humanScore < 5 && computerScore < 5) {
+  while (playerScore < 5 && computerScore < 5) {
     do {
       humanChoice = prompt(`choices: "rock", "paper", and "scissors" `).toLowerCase();
     } while (!cChoice.includes(humanChoice));
@@ -42,10 +45,10 @@ function playGame() {
 
     playRound(humanChoice, computerChoice);
 
-    alert(`current Score - Human: ${humanScore}, Computer: ${computerScore}`);
+    alert(`current Score - Human: ${playerScore}, Computer: ${computerScore}`);
 
   }
-  if (humanScore === 5) {
+  if  (playerScore === 5) {
     console.log("Human wins!");
   } else {
     console.log("Computer Wins!");
