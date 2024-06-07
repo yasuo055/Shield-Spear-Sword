@@ -29,12 +29,11 @@ body {
   font-family: "Roboto", sans-serif;
   line-height: 1.6;
   /* footer support  */
-  margin-bottom: 45px;
-  /* margin: 0;
+  margin-bottom: 100px; 
+ /* margin: 0;
   padding: 0;
   overflow: hidden;  Add this line to hide overflow */
 }
-
 .card {
   position: relative;
   width: 610px;
@@ -48,7 +47,6 @@ body {
   justify-content: center;
   margin: 0 auto;
 }
-
 .card-title {
   position: absolute;
   top: 1px;
@@ -71,7 +69,7 @@ body {
   width: 600px;
   height: 220px;
   z-index: 2;
-  background: rgb(243, 240, 240);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 10px;
   overflow: hidden;
   outline: 2px solid white;
@@ -85,7 +83,7 @@ body {
   width: 600px;
   height: 200px;
   border-radius: 50%;
-  background-color: #0703f7;
+  background-color: #b90901;
   opacity: 1;
   filter: blur(12px);
   animation: blob-bounce 5s infinite ease;
@@ -95,24 +93,19 @@ body {
   0% {
     transform: translate(-100%, -100%) translate3d(0, 0, 0);
   }
-
   25% {
     transform: translate(-100%, -100%) translate3d(100%, 0, 0);
   }
-
   50% {
     transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
   }
-
   75% {
     transform: translate(-100%, -100%) translate3d(0, 100%, 0);
   }
-
   100% {
     transform: translate(-100%, -100%) translate3d(0, 0, 0);
   }
 }
-
 .buttons {
   display: flex;
   justify-content: space-around;
@@ -120,7 +113,6 @@ body {
   margin-top: 30px;
   z-index: 3;
 }
-
 button {
   border: none;
   color: inherit;
@@ -147,7 +139,6 @@ button {
 }
 
 @keyframes jump {
-
   0%,
   20%,
   50%,
@@ -155,16 +146,13 @@ button {
   100% {
     transform: translateY(0);
   }
-
   40% {
     transform: translateY(-30px);
   }
-
   60% {
     transform: translateY(-15px);
   }
 }
-
 /* MAIN */
 
 .main {
@@ -240,7 +228,7 @@ button {
 .modal {
   position: fixed;
   z-index: 1;
-  top: 48%;
+  top: 45%;
   left: 50%;
   width: 300px;
   padding: 30px;
@@ -258,7 +246,7 @@ button {
 }
 
 .modal-title {
-  font-size: 28px;
+  font-size: 40px;
   font-weight: bold;
 }
 
@@ -285,12 +273,6 @@ button {
 
 /* MEDIA QUERIES */
 @media (max-width: 550px) {
-  body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
   .title {
     font-size: 18px;
   }
@@ -314,25 +296,18 @@ button {
 
   .modal {
     width: 50%;
-    height: 25%;
-    top: 48%;
-  }
-
-  .modal-title {
-    font-size: 24px;
-    font-weight: bold;
+    top: 42%;
   }
 
   .card {
     width: 380px;
     height: 150px;
   }
-
   .card-title {
     position: absolute;
     font-size: 20px;
+   
   }
-
   .bg {
     width: 370px;
     height: 140px;
