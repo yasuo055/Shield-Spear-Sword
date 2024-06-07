@@ -83,7 +83,7 @@ body {
   width: 600px;
   height: 200px;
   border-radius: 50%;
-  background-color: #b90901;
+  background-color: #080cf5;
   opacity: 1;
   filter: blur(12px);
   animation: blob-bounce 5s infinite ease;
