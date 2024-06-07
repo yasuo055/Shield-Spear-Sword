@@ -10,9 +10,9 @@ function playRound(humanChoice, computerSelection) {
   if (humanChoice === computerSelection || computerSelection === humanChoice) {
     console.log("Tie");
   } else if (
-    (humanChoice === "rock" && computerSelection === "scissors") ||
-    (humanChoice === "paper" && computerSelection === "rock") ||
-    (humanChoice === "scissors" && computerSelection === "paper")
+    (humanChoice === "shield" && computerSelection === "sword") ||
+    (humanChoice === "spear" && computerSelection === "shield") ||
+    (humanChoice === "sword" && computerSelection === "spear")
   ) {
     console.log("Human wins in this round!");
     playerScore++;
@@ -29,11 +29,11 @@ function getRandomChoice() {
     let randomNumber = Math.floor(Math.random() * 3)
     switch (randomNumber) {
       case 0:
-        return 'rock'
+        return 'shield'
       case 1:
-        return 'paper'
+        return 'spear'
       case 2:
-        return 'scissors'
+        return 'sword'
     }
   }
   
@@ -52,23 +52,23 @@ const playerScorePara = document.querySelector("#playerScore");
 const computerScorePara = document.querySelector("#computerScore");
 const playerSign = document.querySelector("#playerSign");
 const computerSign = document.querySelector("#computerSign");
-const rockBtn = document.querySelector("#rockBtn");
-const paperBtn = document.querySelector("#paperBtn");
-const scissorsBtn = document.querySelector("#scissorsBtn");
-const endgameModal = document.querySelector("#endgameModal");
-const endgameMsg = document.querySelector("#endgameMsg");
+const shieldBtn = document.querySelector("#shieldBtn");
+const spearBtn = document.querySelector("#spearBtn");
+const swordBtn = document.querySelector("#swordBtn");
+const resultGameDialog = document.querySelector("#resultGameDialog");
+const resultGameMessage = document.querySelector("#resultGameMessage");
 const overlay = document.querySelector("#overlay");
 const restartBtn = document.querySelector("#restartBtn");
 
-rockBtn.addEventListener("click", () => handleClick("rock"));
-paperBtn.addEventListener("click", () => handleClick("paper"));
-scissorsBtn.addEventListener("click", () => handleClick("scissors"));
+shieldBtn.addEventListener("click", () => handleClick("shield"));
+spearBtn.addEventListener("click", () => handleClick("spear"));
+swordBtn.addEventListener("click", () => handleClick("sword"));
 restartBtn.addEventListener("click", restartGame);
-overlay.addEventListener("click", closeEndgameModal);
+overlay.addEventListener("click", closeresultGameDialog);
 
 function handleClick(humanChoice) {
   if (isGameOver()) {
-    openEndgameModal();
+    openresultGameDialog();
     return;
   }
 
@@ -78,31 +78,31 @@ function handleClick(humanChoice) {
   updateScore();
 
   if (isGameOver()) {
-    openEndgameModal();
+    openresultGameDialog();
     setFinalMessage();
   }
 }
 
 function updateChoices(playerSelection, computerSelection) {
   switch (playerSelection) {
-    case "rock":
+    case "shield":
       playerSign.textContent = "🛡️";
       break;
-    case "oaper":
+    case "spear":
       playerSign.textContent = "🔱";
       break;
-    case "scissors":
+    case "sword":
       playerSign.textContent = "🗡️";
       break;
   }
   switch (computerSelection) {
-    case "rock":
+    case "shield":
       computerSign.textContent = "🛡️";
       break;
-    case "paper":
+    case "spear":
       computerSign.textContent = "🔱";
       break;
-    case "scissors":
+    case "sword":
       computerSign.textContent = "🗡️";
       break;
   }
@@ -143,20 +143,20 @@ function updateScore() {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
       }
       
-      function openEndgameModal() {
-        endgameModal.classList.add('active')
+      function openresultGameDialog() {
+        resultGameDialog.classList.add('active')
         overlay.classList.add('active')
       }
       
-      function closeEndgameModal() {
-        endgameModal.classList.remove('active')
+      function closeresultGameDialog() {
+        resultGameDialog.classList.remove('active')
         overlay.classList.remove('active')
       }
 
       function setFinalMessage() {
         return playerScore > computerScore
-          ? (endgameMsg.textContent = 'You won!')
-          : (endgameMsg.textContent = 'You lost...')
+          ? (resultGameMessage.textContent = 'You won!')
+          : (resultGameMessage.textContent = 'You lost...')
       }
       
       function restartGame() {
@@ -168,6 +168,6 @@ function updateScore() {
         computerScorePara.textContent = 'Computer: 0'
         playerSign.textContent = '❔'
         computerSign.textContent = '❔'
-        endgameModal.classList.remove('active')
+        resultGameDialog.classList.remove('active')
         overlay.classList.remove('active')
       }
