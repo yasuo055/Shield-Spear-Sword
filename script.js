@@ -140,7 +140,7 @@ function capitalizeFirstLetter(string) {
 }
 
 function openresultGameDialog() {
-  resultGameDialog.classList.add("active"); 
+  resultGameDialog.classList.add("active");
   overlay.classList.add("active");
 }
 
