@@ -25,15 +25,10 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function getRandomChoice() {
-  let randomNumber = Math.floor(Math.random() * 3);
-  switch (randomNumber) {
-    case 0:
-      return "shield";
-    case 1:
-      return "spear";
-    case 2:
-      return "sword";
-  }
+  let cChoice = ["shield", "spear", "sword"];
+  let r = Math.floor(Math.random() * 3);
+  let computerChoice = cChoice[r];
+  return computerChoice;
 }
 
 function isGameOver() {
