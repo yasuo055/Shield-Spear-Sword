@@ -103,7 +103,7 @@ function updateScore() {
   if (roundWinner === "tie") {
     scoreData.textContent = "It's a tie!";
   } else if (roundWinner === "player") {
-    scoreData.textContent = "You won!";
+    scoreData.textContent = "You win!";
   } else if (roundWinner === "computer") {
     scoreData.textContent = "You lost!";
   }
@@ -146,14 +146,14 @@ function closeresultGameDialog() {
 
 function setFinalMessage() {
   return playerScore > computerScore
-    ? (resultGameMessage.textContent = "You won, normal!")
-    : (resultGameMessage.textContent = "You lost, loser!");
+    ? (resultGameMessage.textContent = "You win!")
+    : (resultGameMessage.textContent = "You lost!");
 }
 
 function restartGame() {
   playerScore = 0;
   computerScore = 0;
-  scoreData.textContent = "Choose your weapon";
+  scoreData.textContent = "Play a game!";
   scoreMessage.textContent = "First to score 5 points wins the game";
   playerScorePara.textContent = "Player: 0";
   computerScorePara.textContent = "Computer: 0";
