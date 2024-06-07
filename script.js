@@ -151,8 +151,8 @@ function closeresultGameDialog() {
 
 function setFinalMessage() {
   return playerScore > computerScore
-    ? (resultGameMessage.textContent = "You won!")
-    : (resultGameMessage.textContent = "You lost...");
+    ? (resultGameMessage.textContent = "You won, normal!")
+    : (resultGameMessage.textContent = "You lost, loser!");
 }
 
 function restartGame() {
