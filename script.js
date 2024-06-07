@@ -2,56 +2,52 @@ let playerScore = 0;
 let computerScore = 0;
 let roundWinner = "";
 
-
-
-
 // Logic
-function playRound(humanChoice, computerSelection) {
-  if (humanChoice === computerSelection || computerSelection === humanChoice) {
-    console.log("Tie");
-  } else if (
-    (humanChoice === "shield" && computerSelection === "sword") ||
-    (humanChoice === "spear" && computerSelection === "shield") ||
-    (humanChoice === "sword" && computerSelection === "spear")
+function playRound(playerSelection, computerSelection) {
+  if (
+    playerSelection === computerSelection ||
+    computerSelection === playerSelection
   ) {
-    console.log("Human wins in this round!");
+    roundWinner = "tie";
+  } else if (
+    (playerSelection === "shield" && computerSelection === "sword") ||
+    (playerSelection === "spear" && computerSelection === "shield") ||
+    (playerSelection === "sword" && computerSelection === "spear")
+  ) {
+    roundWinner = "player";
     playerScore++;
   } else {
-    console.log("Computer wins in this round!");
+    roundWinner = "computer";
     computerScore++;
   }
 
-  //console.log(`Human Score: ${playerScore}, Computer Score: ${computerScore}`);
-  updateScoreMessage(roundWinner, humanChoice, computerSelection);
+  updateScoreMessage(roundWinner, playerSelection, computerSelection);
 }
 
 function getRandomChoice() {
-    let randomNumber = Math.floor(Math.random() * 3)
-    switch (randomNumber) {
-      case 0:
-        return 'shield'
-      case 1:
-        return 'spear'
-      case 2:
-        return 'sword'
-    }
+  let randomNumber = Math.floor(Math.random() * 3);
+  switch (randomNumber) {
+    case 0:
+      return "shield";
+    case 1:
+      return "spear";
+    case 2:
+      return "sword";
   }
-  
+}
 
 function isGameOver() {
   return playerScore === 5 || computerScore === 5;
 }
 
-
-
 //UI
 
-const scoreInfo = document.querySelector("#scoreInfo");
+const scoreData = document.querySelector("#scoreData");
 const scoreMessage = document.querySelector("#scoreMessage");
 const playerScorePara = document.querySelector("#playerScore");
 const computerScorePara = document.querySelector("#computerScore");
-const playerSign = document.querySelector("#playerSign");
-const computerSign = document.querySelector("#computerSign");
+const playerWeapon = document.querySelector("#playerWeapon");
+const computerWeapon = document.querySelector("#computerWeapon");
 const shieldBtn = document.querySelector("#shieldBtn");
 const spearBtn = document.querySelector("#spearBtn");
 const swordBtn = document.querySelector("#swordBtn");
@@ -66,15 +62,15 @@ swordBtn.addEventListener("click", () => handleClick("sword"));
 restartBtn.addEventListener("click", restartGame);
 overlay.addEventListener("click", closeresultGameDialog);
 
-function handleClick(humanChoice) {
+function handleClick(playerSelection) {
   if (isGameOver()) {
     openresultGameDialog();
     return;
   }
 
   const computerSelection = getRandomChoice();
-  playRound(humanChoice, computerSelection);
-  updateChoices(humanChoice, computerSelection);
+  playRound(playerSelection, computerSelection);
+  updateChoices(playerSelection, computerSelection);
   updateScore();
 
   if (isGameOver()) {
@@ -86,88 +82,88 @@ function handleClick(humanChoice) {
 function updateChoices(playerSelection, computerSelection) {
   switch (playerSelection) {
     case "shield":
-      playerSign.textContent = "🛡️";
+      playerWeapon.textContent = "🛡️";
       break;
     case "spear":
-      playerSign.textContent = "🔱";
+      playerWeapon.textContent = "🔱";
       break;
     case "sword":
-      playerSign.textContent = "🗡️";
+      playerWeapon.textContent = "🗡️";
       break;
   }
   switch (computerSelection) {
     case "shield":
-      computerSign.textContent = "🛡️";
+      computerWeapon.textContent = "🛡️";
       break;
     case "spear":
-      computerSign.textContent = "🔱";
+      computerWeapon.textContent = "🔱";
       break;
     case "sword":
-      computerSign.textContent = "🗡️";
+      computerWeapon.textContent = "🗡️";
       break;
   }
 }
 
 function updateScore() {
-    if (roundWinner === 'tie') {
-      scoreInfo.textContent = "It's a tie!"
-    } else if (roundWinner === 'player') {
-      scoreInfo.textContent = 'You won!'
-    } else if (roundWinner === 'computer') {
-      scoreInfo.textContent = 'You lost!'
-    }
-  
-    playerScorePara.textContent = `Player: ${playerScore}`
-    computerScorePara.textContent = `Computer: ${computerScore}`
+  if (roundWinner === "tie") {
+    scoreData.textContent = "It's a tie!";
+  } else if (roundWinner === "player") {
+    scoreData.textContent = "You won!";
+  } else if (roundWinner === "computer") {
+    scoreData.textContent = "You lost!";
   }
-  
-  function updateScoreMessage(winner, playerSelection, computerSelection) {
-    if (winner === 'player') {
-      scoreMessage.textContent = `${capitalizeFirstLetter(
-        playerSelection
-      )} beats ${computerSelection.toLowerCase()}`
-      return
-    }
-    if (winner === 'computer') {
-      scoreMessage.textContent = `${capitalizeFirstLetter(
-        playerSelection
-      )} is beaten by ${computerSelection.toLowerCase()}`
-      return
-    }
+
+  playerScorePara.textContent = `Player: ${playerScore}`;
+  computerScorePara.textContent = `Computer: ${computerScore}`;
+}
+
+function updateScoreMessage(winner, playerSelection, computerSelection) {
+  if (winner === "player") {
     scoreMessage.textContent = `${capitalizeFirstLetter(
-        playerSelection
-      )} ties with ${computerSelection.toLowerCase()}`
-    }
+      playerSelection
+    )} beats ${computerSelection}`;
+    return;
+  }
+  if (winner === "computer") {
+    scoreMessage.textContent = `${capitalizeFirstLetter(
+      playerSelection
+    )} is beaten by ${computerSelection}`;
+    return;
+  }
+  scoreMessage.textContent = `${capitalizeFirstLetter(
+    playerSelection
+  )} ties with ${computerSelection}`;
+}
 
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
-      }
-      
-      function openresultGameDialog() {
-        resultGameDialog.classList.add('active')
-        overlay.classList.add('active')
-      }
-      
-      function closeresultGameDialog() {
-        resultGameDialog.classList.remove('active')
-        overlay.classList.remove('active')
-      }
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
-      function setFinalMessage() {
-        return playerScore > computerScore
-          ? (resultGameMessage.textContent = 'You won!')
-          : (resultGameMessage.textContent = 'You lost...')
-      }
-      
-      function restartGame() {
-        playerScore = 0
-        computerScore = 0
-        scoreInfo.textContent = 'Choose your weapon'
-        scoreMessage.textContent = 'First to score 5 points wins the game'
-        playerScorePara.textContent = 'Player: 0'
-        computerScorePara.textContent = 'Computer: 0'
-        playerSign.textContent = '❔'
-        computerSign.textContent = '❔'
-        resultGameDialog.classList.remove('active')
-        overlay.classList.remove('active')
-      }
+function openresultGameDialog() {
+  resultGameDialog.classList.add("active"); 
+  overlay.classList.add("active");
+}
+
+function closeresultGameDialog() {
+  resultGameDialog.classList.remove("active");
+  overlay.classList.remove("active");
+}
+
+function setFinalMessage() {
+  return playerScore > computerScore
+    ? (resultGameMessage.textContent = "You won!")
+    : (resultGameMessage.textContent = "You lost...");
+}
+
+function restartGame() {
+  playerScore = 0;
+  computerScore = 0;
+  scoreData.textContent = "Choose your weapon";
+  scoreMessage.textContent = "First to score 5 points wins the game";
+  playerScorePara.textContent = "Player: 0";
+  computerScorePara.textContent = "Computer: 0";
+  playerWeapon.textContent = "❔";
+  computerWeapon.textContent = "❔";
+  resultGameDialog.classList.remove("active");
+  overlay.classList.remove("active");
+}

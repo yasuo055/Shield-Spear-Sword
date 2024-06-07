@@ -1,67 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>SHIELD SPEAR SWORD</title>
-  <!-- <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap"
-    rel="stylesheet"
-  /> -->
-  <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>SHIELD SPEAR SWORD</title>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-</head>
-
-<body>
-    
+  <body>
     <header class="header">
-        <h1 class="title">SHIELD SPEAR SWORD</h1>
-      </header>
-      <main class="main">
-        <div class="scoreboard">
-          <h2 class="score-info" id="scoreInfo">Choose your weapon</h2>
-          <h3 class="score-message" id="scoreMessage">
-            First to score 5 points wins the game
-          </h3>
-          <div class="scores-container">
-            <div class="score-box">
-              <div class="sign" id="playerSign">❔</div>
-              <p class="score" id="playerScore">Player: 0</p>
-            </div>
-            <div class="score-box">
-              <div class="sign" id="computerSign">❔</div>
-              <p class="score" id="computerScore">Computer: 0</p>
-            </div>
+      <h1 class="title">SHIELD SPEAR SWORD</h1>
+    </header>
+    <main class="main">
+      <div class="scoreboard">
+        <h2 class="score-data" id="scoreData">Choose your weapon</h2>
+        <h3 class="score-message" id="scoreMessage">
+          First to score 5 points wins the game
+        </h3>
+        <div class="result-container">
+          <div class="score-container">
+            <div class="weaponSign" id="playerWeapon">❔</div>
+            <p class="score" id="playerScore">Player: 0</p>
+          </div>
+          <div class="score-container">
+            <div class="weaponSign" id="computerWeapon">❔</div>
+            <p class="score" id="computerScore">Computer: 0</p>
           </div>
         </div>
-        <div class="buttons">
-          <button class="btn btn-square" id="shieldBtn">
-            <div class="sign">🛡️</div>
-          </button>
-          <button class="btn btn-square" id="spearBtn">
-            <div class="sign">🔱</div>
-          </button>
-          <button class="btn btn-square" id="swordBtn">
-            <div class="sign">🗡️</div>
-          </button>
-        </div>
-      </main>
-      <footer class="footer">
-        <p>
-          <!-- Copyright ©
-          <script>
-            document.write(new Date().getFullYear())
-          </script> -->
-        </p>
-      </footer>
-      <div class="modal" id="resultGameDialog">
-        <p class="modal-title" id="resultGameMessage"></p>
-        <button class="btn btn-restart" id="restartBtn">Play again</button>
       </div>
-      <div class="overlay" id="overlay"></div>
-  <script src="script.js"></script>
-</body>
+      <div class="buttons">
+        <button class="btn btn-square" id="shieldBtn">
+          <div class="weaponSign">🛡️</div>
+        </button>
+        <button class="btn btn-square" id="spearBtn">
+          <div class="weaponSign">🔱</div>
+        </button>
+        <button class="btn btn-square" id="swordBtn">
+          <div class="weaponSign">🗡️</div>
+        </button>
+      </div>
+    </main>
+    <footer class="footer">
+      <p>pogi</p>
+    </footer>
+    <div class="modal" id="resultGameDialog">
+      <p class="modal-title" id="resultGameMessage"></p>
+      <button class="btn btn-restart" id="restartBtn">Play again!</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <script src="script.js"></script>
+  </body>
 </html>
