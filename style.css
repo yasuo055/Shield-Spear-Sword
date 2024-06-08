@@ -30,6 +30,7 @@ body {
   font-weight: 400;
   font-style: normal;
   line-height: 1.6;
+
   margin-bottom: 20px;
 }
 /* HEADER */
@@ -51,7 +52,6 @@ body {
 }
 
 @keyframes jump {
-
   0%,
   20%,
   50%,
@@ -59,16 +59,13 @@ body {
   100% {
     transform: translateY(0);
   }
-
   40% {
     transform: translateY(-30px);
   }
-
   60% {
     transform: translateY(-15px);
   }
 }
-
 /* MAIN */
 
 .main {
@@ -237,7 +234,7 @@ button {
 .modal {
   position: fixed;
   z-index: 1;
-  top: 48%;
+  top: 45%;
   left: 50%;
   width: 300px;
   padding: 30px;
@@ -255,7 +252,7 @@ button {
 }
 
 .modal-title {
-  font-size: 28px;
+  font-size: 40px;
   font-weight: bold;
 }
 
@@ -282,12 +279,6 @@ button {
 
 /* MEDIA QUERIES */
 @media (max-width: 550px) {
-  body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
   .title {
     font-size: 48px;
   }
@@ -311,25 +302,18 @@ button {
 
   .modal {
     width: 50%;
-    height: 25%;
-    top: 48%;
-  }
-
-  .modal-title {
-    font-size: 24px;
-    font-weight: bold;
+    top: 42%;
   }
 
   .card {
     width: 380px;
     height: 150px;
   }
-
   .card-title {
     position: absolute;
     font-size: 20px;
+   
   }
-
   .bg {
     width: 370px;
     height: 140px;
