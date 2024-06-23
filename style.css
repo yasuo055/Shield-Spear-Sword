@@ -17,12 +17,6 @@
   margin: 0;
 }
 
-html {
-  /* footer support */
-  position: relative;
-  min-height: 100%;
-}
-
 body {
   background-color: var(--primary-dark);
   color: var(--primary-light);
